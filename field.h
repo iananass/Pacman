@@ -12,6 +12,8 @@ public:
 
     const int e_width;
     const int e_height;
+    Cell& Position(int x, int y);
+private:
     Cell** m_cells;
 };
 

@@ -7,7 +7,7 @@
 
 class QPainter;
 class QPaintEvent;
-class Cell;
+class Field;
 
 
 class Painter
@@ -17,7 +17,7 @@ public:
 
 public:
     void paint(QPainter *painter, QPaintEvent *event, int elapsed);
-    void paintField(QPainter *painter, QPaintEvent *event, const Cell **matrix, int w, int h);
+    void paintField(QPainter *painter, QPaintEvent *event, Field* matrix, int w, int h);
 
 private:
 

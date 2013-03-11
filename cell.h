@@ -1,8 +1,10 @@
 #ifndef __PACMAN__CELL__H__
 #define __PACMAN__CELL__H__
+#include <QList>
 
-class Cell
-{
+class Actor;
+
+class Cell {
 public:
     explicit Cell(const char c);
     Cell();
@@ -10,10 +12,8 @@ public:
 
     bool IsStandable() const;
 
-    void AddMonster();
-    void RemoveMonster();
-    void AddPacman();
-    void RemovePacman();
+    void AddActor(const Actor*);
+    void RemoveActor(const Actor*);
 
     bool HasAPacman() const;
     bool HasAMonster() const;
@@ -28,10 +28,14 @@ public:
     DrawObject WhatToDraw() const;
 
 private:
+    void AddMonster(const Actor*);
+    void RemoveMonster(const Actor*);
+    void AddPacman(const Actor*);
+    void RemovePacman(const Actor*);
     bool IsWall;
     bool HasAFood;
-    int numPacmans;
-    int numMonsters;
+    QList<const Actor*> m_Pacmans;
+    QList<const Actor*> m_Monsters;
 
 };
 

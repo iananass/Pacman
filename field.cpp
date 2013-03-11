@@ -29,14 +29,16 @@ Field::Field(int w, int h)
     }
 
 
-    for (int i=0; i< 4; ++i)
+   /* for (int i=0; i< 4; ++i)
     {
         int x = rand()%(e_width-1);
         int y = rand()%(e_height-1);
         m_cells[x][y].Init('#');
 
-    }
+    }*/
     m_cells[1][1].Init('.');
+    m_cells[1][2].Init('.');
+
 }
 
 Field::~Field()
@@ -49,4 +51,9 @@ Field::~Field()
 bool Field::IsStandable(int x, int y)
 {
     return m_cells[x][y].IsStandable();
+}
+
+Cell& Field::Position(int x, int y)
+{
+    return m_cells[x][y];
 }

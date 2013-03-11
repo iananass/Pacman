@@ -1,9 +1,11 @@
 #include "cell.h"
+#include "actor.h"
 #include <assert.h>
+#include <QDebug>
 
 void diediedie()
 {
-
+    qDebug() << "diediedie";
 }
 
 Cell::Cell(const char c)
@@ -16,18 +18,16 @@ Cell::Cell()
     Init('#');
 }
 
-
 void Cell::Init(const char c)
 {
     switch (c) {
-    case '#':
-        IsWall = true;
-        break;
-    case '.':
-        IsWall = false;
-        HasAFood = true;
-        numPacmans = numMonsters = 0;
-        break;
+        case '#':
+            IsWall = true;
+            break;
+        case '.':
+            IsWall = false;
+            HasAFood = true;
+            break;
     }
 }
 
@@ -36,45 +36,73 @@ bool Cell::IsStandable() const
     return !IsWall;
 }
 
-void Cell::AddMonster()
+void Cell::AddActor(const Actor* ac)
+{
+    if (ac->Type() == Actor::e_Pacman)
+        AddPacman(ac);
+    else if (ac->Type() == Actor::e_Monster)
+        AddMonster(ac);
+}
+
+void Cell::RemoveActor(const Actor* ac)
+{
+    if (ac->Type() == Actor::e_Pacman)
+        RemovePacman(ac);
+    else if (ac->Type() == Actor::e_Monster)
+        RemoveMonster(ac);
+}
+
+void Cell::AddMonster(const Actor* ac)
 {
     if (HasAPacman())
         diediedie();
 
-    ++numMonsters;
+    m_Monsters.push_back(ac);
     assert(!IsWall);
 }
-void Cell::RemoveMonster()
+
+void Cell::RemoveMonster(const Actor* ac)
 {
-    --numMonsters;
-    assert(numMonsters >= 0);
+    for (QList<const Actor*>::iterator it = m_Monsters.begin(), ie = m_Monsters.end();
+            it != ie; ++it) {
+        if (ac == *it) {
+            m_Monsters.erase(it);
+            return;
+        }
+    }
+    assert(0);
 }
 
-void Cell::AddPacman()
+void Cell::AddPacman(const Actor* ac)
 {
     if (HasAMonster())
         diediedie();
 
-    ++numPacmans;
+    m_Pacmans.push_back(ac);
     HasAFood = false;
     assert(!IsWall);
 }
 
-void Cell::RemovePacman()
+void Cell::RemovePacman(const Actor* ac)
 {
-    --numPacmans;
-    assert(numPacmans >= 0);
+    for (QList<const Actor*>::iterator it = m_Pacmans.begin(), ie = m_Pacmans.end();
+            it != ie; ++it) {
+        if (ac == *it) {
+            m_Pacmans.erase(it);
+            return;
+        }
+    }
+    assert(0);
 }
-
 
 bool Cell::HasAPacman() const
 {
-    return (numPacmans > 0);
+    return (m_Pacmans.size());
 }
 
 bool Cell::HasAMonster() const
 {
-    return (numMonsters > 0);
+    return (m_Monsters.size());
 }
 
 Cell::DrawObject Cell::WhatToDraw() const
