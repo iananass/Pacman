@@ -1,6 +1,6 @@
 #include "pacman.h"
-#include "field.h"
-#include "cell.h"
+#include "field/field.h"
+#include "cell/cell.h"
 
 #include <assert.h>
 

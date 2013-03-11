@@ -1,6 +1,6 @@
 #include "monster.h"
-#include "field.h"
-#include "cell.h"
+#include "field/field.h"
+#include "cell/cell.h"
 #include "common.h"
 #include <QTimer>
 #include <QDebug>

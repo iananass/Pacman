@@ -1,11 +1,11 @@
 #include <QtGui>
 #include <QKeyEvent>
-#include "widget.h"
-#include "painter.h"
-#include "field.h"
-#include "pacman.h"
+#include "widget/widget.h"
+#include "painter/painter.h"
+#include "field/field.h"
+#include "pacman/pacman.h"
 #include "common.h"
-#include "monster.h"
+#include "monster/monster.h"
 
 Widget::Widget(QWidget *parent)
 : QWidget(parent)

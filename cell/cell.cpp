@@ -1,5 +1,5 @@
 #include "cell.h"
-#include "actor.h"
+#include "actor/actor.h"
 #include <assert.h>
 #include <QDebug>
 

@@ -1,5 +1,5 @@
 #include "field.h"
-#include "cell.h"
+#include "cell/cell.h"
 
 #include <stdlib.h>
 

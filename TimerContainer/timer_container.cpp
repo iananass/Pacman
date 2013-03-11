@@ -1,6 +1,6 @@
 #include "timer_container.h"
 
-#include "actor.h"
+#include "actor/actor.h"
 #include <QTimer>
 #include <QList>
 #include <QDebug>

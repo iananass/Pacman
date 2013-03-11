@@ -1,7 +1,7 @@
 #ifndef __PACMAN__PACKMAN__H__
 #define __PACMAN__PACKMAN__H__
 
-#include "actor.h"
+#include "actor/actor.h"
 
 class Field;
 class Cell;

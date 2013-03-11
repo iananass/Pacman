@@ -2,7 +2,7 @@
 #define	MONSTER_H
 
 #include <QWidget>
-#include "actor.h"
+#include "actor/actor.h"
 
 class Field;
 

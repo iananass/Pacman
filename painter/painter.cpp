@@ -1,7 +1,7 @@
 #include <QtGui>
 #include "painter.h"
-#include "cell.h"
-#include "field.h"
+#include "cell/cell.h"
+#include "field/field.h"
 
 Painter::Painter(int WidgetW, int WidgetH, int FieldW, int FieldH)
 : m_xScale(WidgetW / FieldW)

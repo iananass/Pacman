@@ -1,6 +1,6 @@
 #include "actor.h"
-#include "field.h"
-#include "cell.h"
+#include "field/field.h"
+#include "cell/cell.h"
 #include "common.h"
 #include <assert.h>
 #include <QDebug>
