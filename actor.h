@@ -1,6 +1,6 @@
 #ifndef ACTOR_H
 #define	ACTOR_H
-
+#include "common.h"
 
 class Field;
 
@@ -13,12 +13,12 @@ public:
     };
     
     Actor(ActorType type, int x, int y, Field* f);
+    virtual ~Actor();
     ActorType Type() const;
     
-    void moveLeft(Field* f);
-    void moveRight(Field* f);
-    void moveUp(Field* f);
-    void moveDown(Field* f);
+    bool TryToMove(Direction d, Field *f);
+    
+    virtual void MakeTurn() = 0;
 
 protected:
     int m_x;

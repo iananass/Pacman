@@ -10,6 +10,7 @@ class Pacman : public Actor
 { 
 public:
     Pacman(int x, int y, Field* f);
+    void MakeTurn(){}
 };
 
 #endif // __PACMAN__PACKMAN__H__

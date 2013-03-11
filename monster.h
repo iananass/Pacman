@@ -11,6 +11,7 @@ class Monster : public QObject, public Actor
     Q_OBJECT
 public:
     Monster(int x, int y, Field* f);
+    ~Monster();
 public slots:
     void MakeTurn();
 private:

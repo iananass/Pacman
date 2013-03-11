@@ -75,8 +75,13 @@ void Cell::RemoveMonster(const Actor* ac)
 
 void Cell::AddPacman(const Actor* ac)
 {
-    if (HasAMonster())
-        diediedie();
+    if (HasAMonster()) {
+        QList<const Actor*>::iterator it = m_Monsters.begin();
+        while (it != m_Monsters.end()) {
+            delete *it;
+            it = m_Monsters.erase(it);
+        }
+    }
 
     m_Pacmans.push_back(ac);
     HasAFood = false;

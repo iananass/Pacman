@@ -7,7 +7,8 @@ HEADERS     = \
     cell.h \
     pacman.h \
     actor.h \
-    monster.h
+    monster.h \
+    TimerContainer/timer_container.h
 SOURCES     = \
     main.cpp \
     widget.cpp \
@@ -16,4 +17,5 @@ SOURCES     = \
     cell.cpp \
     pacman.cpp \
     actor.cpp \
-    monster.cpp
+    monster.cpp \
+    TimerContainer/timer_container.cpp

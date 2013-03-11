@@ -4,13 +4,17 @@
 #include "painter.h"
 #include "field.h"
 #include "pacman.h"
+#include "common.h"
 #include "monster.h"
 
 Widget::Widget(QWidget *parent)
 : QWidget(parent)
-, m_pfield(new Field(5, 5))
+, m_pfield(new Field(7, 7))
 , m_pPacman(new Pacman(1, 1, m_pfield))
 {
+    new Monster(1, 2, m_pfield);
+    new Monster(1, 2, m_pfield);
+    new Monster(1, 2, m_pfield);
     new Monster(1, 2, m_pfield);
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
@@ -38,11 +42,11 @@ void Widget::paintEvent(QPaintEvent *event)
 void Widget::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Left)
-        m_pPacman->moveLeft(m_pfield);
+        m_pPacman->TryToMove(Left, m_pfield);
     if (k->key() == Qt::Key_Right)
-        m_pPacman->moveRight(m_pfield);
+        m_pPacman->TryToMove(Right, m_pfield);
     if (k->key() == Qt::Key_Up)
-        m_pPacman->moveUp(m_pfield);
+        m_pPacman->TryToMove(Up, m_pfield);
     if (k->key() == Qt::Key_Down)
-        m_pPacman->moveDown(m_pfield);
+        m_pPacman->TryToMove(Down, m_pfield);
 }
